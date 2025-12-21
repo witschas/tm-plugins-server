@@ -3,6 +3,9 @@
   "version": "1.2.1",
   "description": "TypingMind Proxy",
   "main": "index.ts",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "tsx watch --clear-screen=false src/index.ts | pino-pretty",
     "build": "rimraf dist && tsup",
