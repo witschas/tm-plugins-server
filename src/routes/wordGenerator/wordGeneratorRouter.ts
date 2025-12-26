@@ -85,7 +85,7 @@ cron.schedule('0 * * * *', () => {
   });
 });
 
-const serverUrl = process.env.RENDER_EXTERNAL_URL || 'http://localhost:3000';
+const serverUrl = process.env.SERVER_URL || process.env.RENDER_EXTERNAL_URL || 'http://localhost:3000';
 
 const FONT_CONFIG = {
   size: 12, // Font size in point
