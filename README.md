@@ -34,7 +34,7 @@ Follow this guide for setting up a TypingMind's plugin: [Build a TypingMind Plug
 
 After deploying, visit your Plugins Server URL to see the list of available endpoints (served in Swagger UI).
 
-In your local development environment, visit <http://localhost:3000> or the remote url <https://normal-angela-rwits-183be028.koyeb.app/> to access the page.
+In your local development environment, visit <http://localhost:3000> or the remote url <https://emotional-sarette-typemind-69b54507.koyeb.app/> to access the page.
 The app is depoloyed on <https://koyeb.com>
 Account <rico@witschas.com>
 

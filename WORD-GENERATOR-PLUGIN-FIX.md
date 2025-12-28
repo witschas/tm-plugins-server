@@ -57,7 +57,7 @@ word-generator-plugin-fixed.json
 2. Click on it to open settings
 3. Under **"Plugin Server"**, enter your server URL:
    ```
-   https://normal-angela-rwits-183be028.koyeb.app
+   https://emotional-sarette-typemind-69b54507.koyeb.app/
    ```
 4. Configure other settings as desired (font size, margins, etc.)
 5. Click **"Save"**
