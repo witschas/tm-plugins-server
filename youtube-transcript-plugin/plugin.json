@@ -1,0 +1,51 @@
+{
+  "id": "youtube_transcript",
+  "uuid": "a1234567-1234-1234-1234-123456789001",
+  "emoji": "📹",
+  "title": "YouTube Transcript",
+  "iconURL": "https://custom.typingmind.com/assets/plugins/youtube.webp",
+  "disabled": false,
+  "httpAction": {
+    "id": "yt-transcript-001",
+    "url": "{pluginServer}/youtube-transcript/get-transcript?videoId={videoId}",
+    "name": "",
+    "method": "GET",
+    "hasBody": false,
+    "hasHeaders": true,
+    "requestHeaders": "{\n  \"Content-Type\": \"application/json\"\n}",
+    "resultTransform": {
+      "engine": "handlebars",
+      "templateString": "{{responseObject.textOnly}}"
+    },
+    "hasResultTransform": true
+  },
+  "openaiSpec": {
+    "name": "get_youtube_transcript",
+    "parameters": {
+      "type": "object",
+      "required": ["videoId"],
+      "properties": {
+        "videoId": {
+          "type": "string",
+          "description": "Die YouTube Video ID aus der URL (z.B. 'dQw4w9WgXcQ' aus https://www.youtube.com/watch?v=dQw4w9WgXcQ)"
+        }
+      }
+    },
+    "description": "Ruft das Transkript (Untertitel) eines YouTube-Videos ab. Gibt den vollständigen Text als String zurück."
+  },
+  "outputType": "respond_to_ai",
+  "oauthConfig": null,
+  "userSettings": [
+    {
+      "name": "pluginServer",
+      "label": "Plugin Server",
+      "required": true,
+      "description": "Die URL des Plugin-Servers. Für mehr Details: https://docs.typingmind.com/plugins/plugins-server",
+      "placeholder": "https://...."
+    }
+  ],
+  "overviewMarkdown": "# **YouTube Transcript**\n\nRuft automatisch das Transkript (Untertitel) von YouTube-Videos ab.\n\n### 🎯 **Funktionsweise**\n- Extrahiert die Video-ID aus YouTube-URLs\n- Lädt das vollständige Transkript herunter\n- Gibt den Text als Klartext zurück\n\n### 📝 **Unterstützte Formate**\n- youtube.com/watch?v=VIDEO_ID\n- youtu.be/VIDEO_ID\n- Direkte Video-IDs\n\n### ⚠️ **Hinweis**\n- Funktioniert nur bei Videos mit verfügbaren Untertiteln\n- Einige Videos haben keine Transkripte verfügbar\n- Ein Plugin-Server muss eingerichtet sein\n\n## **Beispiel**\n> \"Kannst du das Transkript des Videos https://www.youtube.com/watch?v=dQw4w9WgXcQ abrufen?\"",
+  "turnedOnByDefault": false,
+  "authenticationType": "AUTH_TYPE_NONE",
+  "implementationType": "http"
+}
