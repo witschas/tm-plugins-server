@@ -15,8 +15,8 @@
     "requestBody": "{\n    \"title\": \"{title}\",\n    \"header\": {\n        \"text\": \"{header}\",\n        \"alignment\": \"{headerAlignment}\"\n    },\n    \"footer\": {\n        \"text\": \"{footer}\",\n        \"alignment\": \"{footerAlignment}\"\n    },\n    \"sections\": {sections},\n    \"wordConfig\": {\n       \"fontSize\": {fontSize},\n       \"lineHeight\": {lineHeight},\n       \"fontFamily\": \"{fontFamily}\",\n       \"showPageNumber\": {showPageNumber},\n       \"showTableOfContent\": {showTableOfContent},\n       \"showNumberingInHeader\": {showNumberingInHeader},\n       \"numberingReference\": \"{numberingReference}\",\n       \"pageOrientation\": \"{pageOrientation}\",\n       \"margins\": \"{margins}\"\n   }\n}",
     "requestHeaders": "{\n      \"Content-Type\": \"application/json\"\n}",
     "resultTransform": {
-      "engine": "jmes",
-      "expression": "responseObject.downloadUrl"
+      "engine": "handlebars",
+      "templateString": "[Download Word Document]({{responseObject.downloadUrl}})"
     },
     "hasResultTransform": true
   },
