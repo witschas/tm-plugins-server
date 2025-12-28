@@ -21,7 +21,7 @@
     "hasResultTransform": true
   },
   "openaiSpec": {
-    "name": "generate_word_file",
+    "name": "generate_word_file_fixed",
     "parameters": {
       "type": "object",
       "required": [
