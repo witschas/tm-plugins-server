@@ -1,0 +1,132 @@
+{
+  "id": "notion_database_manager",
+  "uuid": "e1234567-1234-1234-1234-123456789005",
+  "emoji": "📊",
+  "title": "Notion Database Manager",
+  "iconURL": "https://custom.typingmind.com/assets/plugins/notion.webp",
+  "disabled": false,
+  "httpAction": {
+    "id": "notion-db-001",
+    "url": "{pluginServer}/notion-database/{action}",
+    "name": "",
+    "method": "POST",
+    "hasBody": true,
+    "hasHeaders": true,
+    "requestBody": "{notionApiKey, databaseId, pageId, properties, databaseStructure, query, sorts, pageSize, startCursor, parent, title, properties}",
+    "requestHeaders": "{\n  \"Content-Type\": \"application/json\"\n}",
+    "resultTransform": {
+      "engine": "handlebars",
+      "templateString": "{{json this}}"
+    },
+    "hasResultTransform": true
+  },
+  "openaiSpec": {
+    "name": "manage_notion_database",
+    "parameters": {
+      "type": "object",
+      "required": ["action", "notionApiKey"],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": ["view-structure", "create-page", "update-page", "archive-page", "query-pages", "create-database"],
+          "description": "Die auszuführende Aktion"
+        },
+        "notionApiKey": {
+          "type": "string",
+          "description": "Der Notion API Schlüssel von https://www.notion.so/profile/integrations"
+        },
+        "databaseId": {
+          "type": "string",
+          "description": "Die ID der Notion-Datenbank (für view-structure, create-page, query-pages)"
+        },
+        "pageId": {
+          "type": "string",
+          "description": "Die ID der Notion-Seite (für update-page, archive-page)"
+        },
+        "properties": {
+          "type": "array",
+          "description": "Die Eigenschaften für create-page oder update-page",
+          "items": {
+            "type": "object"
+          }
+        },
+        "databaseStructure": {
+          "type": "array",
+          "description": "Die Struktur der Datenbank für query-pages",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "type": { "type": "string" },
+              "options": {
+                "type": "array",
+                "items": { "type": "object" }
+              }
+            }
+          }
+        },
+        "query": {
+          "type": "object",
+          "description": "Filter-Kriterien für query-pages"
+        },
+        "sorts": {
+          "type": "array",
+          "description": "Sortier-Kriterien für query-pages",
+          "items": { "type": "object" }
+        },
+        "pageSize": {
+          "type": "number",
+          "description": "Anzahl der Ergebnisse pro Seite (max 100)"
+        },
+        "startCursor": {
+          "type": "string",
+          "description": "Cursor für Paginierung"
+        },
+        "parent": {
+          "type": "object",
+          "description": "Parent-Information für create-database",
+          "properties": {
+            "type": { "type": "string" },
+            "pageId": { "type": "string" },
+            "databaseId": { "type": "string" }
+          }
+        },
+        "title": {
+          "type": "array",
+          "description": "Titel für create-database",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "text": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "description": "Verwaltet Notion-Datenbanken und -Seiten. Unterstützt 6 Aktionen: Struktur anzeigen, Seiten erstellen/aufteilen/archivieren, Datenbank abfragen, Datenbank erstellen. Erfordert einen Notion API-Schlüssel."
+  },
+  "outputType": "respond_to_ai",
+  "oauthConfig": null,
+  "userSettings": [
+    {
+      "name": "pluginServer",
+      "label": "Plugin Server",
+      "required": true,
+      "description": "Die URL des Plugin-Servers. Für mehr Details: https://docs.typingmind.com/plugins/plugins-server",
+      "placeholder": "https://...."
+    },
+    {
+      "name": "notionApiKey",
+      "label": "Notion API Key",
+      "required": true,
+      "description": "Dein Notion Integration API-Schlüssel von https://www.notion.so/profile/integrations",
+      "placeholder": "secret_...",
+      "type": "password"
+    }
+  ],
+  "overviewMarkdown": "# **Notion Database Manager**\n\nVerwalte deine Notion-Datenbanken und -Seiten direkt aus TypingMind heraus.\n\n### 🎯 **Unterstützte Funktionen**\n\n1. **Struktur anzeigen** (`view-structure`)\n   - Zeigt die Struktur einer Notion-Datenbank an\n   - Listet alle Eigenschaften und deren Typen auf\n\n2. **Seite erstellen** (`create-page`)\n   - Erstellt eine neue Seite in einer Datenbank\n   - Unterstützt alle Notion-Eigenschaftstypen\n\n3. **Seite aktualisieren** (`update-page`)\n   - Aktualisiert Eigenschaften einer vorhandenen Seite\n\n4. **Seite archivieren** (`archive-page`)\n   - Archiviert (löscht) eine Seite\n\n5. **Datenbank abfragen** (`query-pages`)\n   - Sucht und filtert Seiten in einer Datenbank\n   - Unterstützt Sortierung und Paginierung\n\n6. **Datenbank erstellen** (`create-database`)\n   - Erstellt eine neue Notion-Datenbank\n\n### 🔑 **Vorbereitung**\n1. Gehe zu https://www.notion.so/profile/integrations\n2. Erstelle eine neue Integration\n3. Kopiere den \"Internal Integration Token\"\n4. Füge deine Datenbank zur Integration hinzu (klicke auf \"...\" → \"Add connections\")\n5. Gib den API-Schlüssel in den Plugin-Einstellungen ein\n\n### 📝 **Hinweis**\n- Ein Plugin-Server muss eingerichtet sein\n- Die Integration muss Zugriff auf die entsprechenden Datenbanken haben\n\n## **Beispiel**\n> \"Zeige mir die Struktur meiner Notion-Datenbank mit der ID abc123\"",
+  "turnedOnByDefault": false,
+  "authenticationType": "AUTH_TYPE_NONE",
+  "implementationType": "http"
+}

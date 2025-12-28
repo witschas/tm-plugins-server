@@ -1,0 +1,51 @@
+{
+  "id": "web_page_reader",
+  "uuid": "b1234567-1234-1234-1234-123456789002",
+  "emoji": "📄",
+  "title": "Web Page Reader",
+  "iconURL": "https://custom.typingmind.com/assets/plugins/web-reader.webp",
+  "disabled": false,
+  "httpAction": {
+    "id": "web-reader-001",
+    "url": "{pluginServer}/web-page-reader/get-content?url={url}",
+    "name": "",
+    "method": "GET",
+    "hasBody": false,
+    "hasHeaders": true,
+    "requestHeaders": "{\n  \"Content-Type\": \"application/json\"\n}",
+    "resultTransform": {
+      "engine": "handlebars",
+      "templateString": "{{responseObject.content}}"
+    },
+    "hasResultTransform": true
+  },
+  "openaiSpec": {
+    "name": "get_web_page_content",
+    "parameters": {
+      "type": "object",
+      "required": ["url"],
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Die vollständige URL der Webseite die gelesen werden soll (z.B. 'https://www.example.com/article')"
+        }
+      }
+    },
+    "description": "Ruft den Inhalt einer Webseite ab und extrahiert den lesbarer Text. Nützlich um Artikel, Blogposts und Dokumente zu analysieren ohne sie manuell kopieren zu müssen."
+  },
+  "outputType": "respond_to_ai",
+  "oauthConfig": null,
+  "userSettings": [
+    {
+      "name": "pluginServer",
+      "label": "Plugin Server",
+      "required": true,
+      "description": "Die URL des Plugin-Servers. Für mehr Details: https://docs.typingmind.com/plugins/plugins-server",
+      "placeholder": "https://...."
+    }
+  ],
+  "overviewMarkdown": "# **Web Page Reader**\n\nLiest den Inhalt von Webseiten automatisch aus und extrahiert den Text.\n\n### 🎯 **Funktionsweise**\n- Ruft den HTML-Inhalt einer Webseite ab\n- Extrahiert den lesbaren Text-Content\n- Entfernt Werbung, Navigation und unnötige Elemente\n\n### 📝 **Verwendungszwecke**\n- Artikel und Blogposts zusammenfassen\n- Dokumentation analysieren\n- Webseiten-Inhalte für KI verarbeiten\n\n### ⚠️ **Hinweise**\n- Funktioniert nur mit öffentlich zugänglichen Webseiten\n- Einige Websites blockieren automatisierte Abrufe\n- Ein Plugin-Server muss eingerichtet sein\n\n## **Beispiel**\n> \"Kannst du den Artikel unter https://example.com/article lesen und zusammenfassen?\"",
+  "turnedOnByDefault": false,
+  "authenticationType": "AUTH_TYPE_NONE",
+  "implementationType": "http"
+}
