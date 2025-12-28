@@ -34,11 +34,80 @@ Follow this guide for setting up a TypingMind's plugin: [Build a TypingMind Plug
 
 After deploying, visit your Plugins Server URL to see the list of available endpoints (served in Swagger UI).
 
-In your local development environment, visit <http://localhost:3000> or the remote url <https://emotional-sarette-typemind-69b54507.koyeb.app/> to access the page.
-The app is depoloyed on <https://koyeb.com>
-Account <rico@witschas.com>
+## 📦 Available Plugins
 
-**Note**: this public server only hosts the API documentation. You cannot use this Public Server as your proxy. You must deploy your own Plugins Server to use all the available endpoints.
+This repository includes **5 fixed plugins** for TypingMind that work correctly with self-hosted servers:
+
+### 1. **Word Generator** (Fixed)
+
+- Generate Word documents with sections, tables, lists, and formatting
+- **Fixed**: Correctly extracts download URLs from self-hosted servers
+- [→ Details](word-generator-plugin/README.md)
+
+### 2. **Excel Generator** (Fixed)
+
+- Create Excel spreadsheets with multiple sheets, tables, and formulas
+- **Fixed**: Works with Koyeb, Render, Railway, and other providers
+- [→ Details](excel-generator-plugin/README.md)
+
+### 3. **PowerPoint Generator** (Fixed)
+
+- Generate PowerPoint presentations with various slide types
+- **Fixed**: Bypasses TypingMind Cloud Sync for direct downloads
+- [→ Details](powerpoint-generator-plugin/README.md)
+
+### 4. **YouTube Transcript**
+
+- Fetch transcripts/subtitles from YouTube videos
+- [→ Details](youtube-transcript-plugin/README.md)
+
+### 5. **Web Page Reader**
+
+- Extract readable text content from web pages
+- [→ Details](web-page-reader-plugin/README.md)
+
+---
+
+## 🚀 Quick Start: Import Plugins
+
+### Option A: Import via JSON (Recommended)
+
+1. Go to the **[plugin-exports/](plugin-exports/)** directory
+2. Open any `.json` file (e.g., `word-generator-plugin.json`)
+3. In TypingMind: **Plugins** → **Import plugins** → **Import plugin from JSON**
+4. Copy the entire JSON file content and paste it
+5. Configure your Plugin Server URL
+6. Save and enjoy!
+
+**📖 Detailed Instructions**: See [plugin-exports/README.md](plugin-exports/README.md) or [plugin-exports/IMPORT_ANLEITUNG.md](plugin-exports/IMPORT_ANLEITUNG.md)
+
+### Option B: Manual Configuration
+
+Each plugin subdirectory contains:
+
+- `plugin.json` - Plugin configuration
+- `README.md` - Usage instructions
+
+You can manually create plugins in TypingMind by copying the configuration from these files.
+
+---
+
+## 🔧 What Was Fixed?
+
+The original official plugins didn't extract the `downloadUrl` correctly from server responses when using self-hosted servers (non-TypingMind Cloud).
+
+**Our Fix**: Used Handlebars templates to extract download URLs and bypass Cloud Sync, enabling direct downloads from your own server.
+
+---
+
+## ⚠️ Important Notes
+
+- **Generated files are automatically deleted after 1 hour**
+- **Plugin Server URL must be configured** for each plugin
+- **Works with any hosting provider** (Koyeb, Render, Railway, AWS, etc.)
+- **No images in Word documents** (current limitation)
+
+---
 
 ## 🛠️ Development (for Typing Mind plugins developers)
 
