@@ -24,9 +24,7 @@
       "name": "get_youtube_transcript",
       "parameters": {
         "type": "object",
-        "required": [
-          "videoId"
-        ],
+        "required": ["videoId"],
         "properties": {
           "videoId": {
             "type": "string",
@@ -77,9 +75,7 @@
       "name": "get_web_page_content",
       "parameters": {
         "type": "object",
-        "required": [
-          "url"
-        ],
+        "required": ["url"],
         "properties": {
           "url": {
             "type": "string",
@@ -131,28 +127,18 @@
       "name": "generate_powerpoint_file_fixed",
       "parameters": {
         "type": "object",
-        "required": [
-          "slides"
-        ],
+        "required": ["slides"],
         "properties": {
           "slides": {
             "type": "array",
             "description": "Eine Liste von Folien. Jede Folie hat einen Typ (title_slide, content_slide, table_slide, chart_slide), einen Titel und optionale Inhalte.",
             "items": {
               "type": "object",
-              "required": [
-                "type",
-                "title"
-              ],
+              "required": ["type", "title"],
               "properties": {
                 "type": {
                   "type": "string",
-                  "enum": [
-                    "title_slide",
-                    "content_slide",
-                    "table_slide",
-                    "chart_slide"
-                  ],
+                  "enum": ["title_slide", "content_slide", "table_slide", "chart_slide"],
                   "description": "Der Folientyp: title_slide (nur Titel), content_slide (Titel + Inhalt), table_slide (Titel + Tabelle), chart_slide (Titel + Diagramm)"
                 },
                 "title": {
@@ -194,12 +180,7 @@
                   "properties": {
                     "type": {
                       "type": "string",
-                      "enum": [
-                        "pie",
-                        "bar",
-                        "line",
-                        "doughnut"
-                      ]
+                      "enum": ["pie", "bar", "line", "doughnut"]
                     },
                     "data": {
                       "type": "array",
@@ -247,12 +228,7 @@
         "name": "layout",
         "type": "enum",
         "label": "Folie Layout",
-        "values": [
-          "LAYOUT_WIDE",
-          "LAYOUT_16x9",
-          "LAYOUT_16x10",
-          "LAYOUT_4x3"
-        ],
+        "values": ["LAYOUT_WIDE", "LAYOUT_16x9", "LAYOUT_16x10", "LAYOUT_4x3"],
         "default": "LAYOUT_WIDE",
         "description": "Das Layout der Folien. Standard ist LAYOUT_WIDE."
       },
@@ -382,10 +358,7 @@
             "description": "An array of sections that make up the document structure. Each section can include content, a heading, and optionally reference a parent section to create a hierarchical structure.",
             "items": {
               "type": "object",
-              "required": [
-                "sectionId",
-                "content"
-              ],
+              "required": ["sectionId", "content"],
               "properties": {
                 "sectionId": {
                   "type": "string",
@@ -422,13 +395,7 @@
                         "description": "The text for paragraphs or list items."
                       },
                       "type": {
-                        "enum": [
-                          "paragraph",
-                          "listing",
-                          "table",
-                          "pageBreak",
-                          "emptyLine"
-                        ],
+                        "enum": ["paragraph", "listing", "table", "pageBreak", "emptyLine"],
                         "type": "string",
                         "description": "Specifies the type of content. It must belongs to a child of a content array within a section or a subsection. If the content type is 'pageBreak', the section or subsection will not include a heading."
                       },
@@ -495,10 +462,7 @@
         "name": "pageOrientation",
         "type": "enum",
         "label": "Page Orientation",
-        "values": [
-          "portrait",
-          "landscape"
-        ],
+        "values": ["portrait", "landscape"],
         "default": "portrait",
         "description": "Set page orientation for all pages."
       },
@@ -530,13 +494,7 @@
         "name": "lineHeight",
         "type": "enum",
         "label": "Line Height",
-        "values": [
-          "1",
-          "1.15",
-          "1.25",
-          "1.5",
-          "2"
-        ],
+        "values": ["1", "1.15", "1.25", "1.5", "2"],
         "default": "1",
         "description": "Set line height for text content."
       },
@@ -544,13 +502,7 @@
         "name": "margins",
         "type": "enum",
         "label": "Page Margins",
-        "values": [
-          "normal",
-          "narrow",
-          "moderate",
-          "wide",
-          "mirrored"
-        ],
+        "values": ["normal", "narrow", "moderate", "wide", "mirrored"],
         "default": "normal",
         "description": "Set margins for the slides. Default margin is normal"
       },
@@ -558,11 +510,7 @@
         "name": "headerAlignment",
         "type": "enum",
         "label": "Header Alignment",
-        "values": [
-          "left",
-          "center",
-          "right"
-        ],
+        "values": ["left", "center", "right"],
         "default": "left",
         "description": "Indicate the position of text in header. Default is left"
       },
@@ -570,11 +518,7 @@
         "name": "footerAlignment",
         "type": "enum",
         "label": "Footer Alignment",
-        "values": [
-          "left",
-          "center",
-          "right"
-        ],
+        "values": ["left", "center", "right"],
         "default": "left",
         "description": "Indicate the position of text in footer. Default is left"
       },
@@ -624,19 +568,14 @@
       "name": "generate_excel_file_fixed",
       "parameters": {
         "type": "object",
-        "required": [
-          "sheetsData"
-        ],
+        "required": ["sheetsData"],
         "properties": {
           "sheetsData": {
             "type": "array",
             "description": "Ein Array von Tabellenblättern. Jedes Blatt enthält einen Namen und ein Array von Tabellen.",
             "items": {
               "type": "object",
-              "required": [
-                "sheetName",
-                "tables"
-              ],
+              "required": ["sheetName", "tables"],
               "properties": {
                 "sheetName": {
                   "type": "string",
@@ -647,10 +586,7 @@
                   "description": "Die Tabellen in diesem Blatt",
                   "items": {
                     "type": "object",
-                    "required": [
-                      "columns",
-                      "rows"
-                    ],
+                    "required": ["columns", "rows"],
                     "properties": {
                       "title": {
                         "type": "string",
@@ -669,10 +605,7 @@
                         "description": "Die Spalten der Tabelle",
                         "items": {
                           "type": "object",
-                          "required": [
-                            "name",
-                            "type"
-                          ],
+                          "required": ["name", "type"],
                           "properties": {
                             "name": {
                               "type": "string",
@@ -680,14 +613,7 @@
                             },
                             "type": {
                               "type": "string",
-                              "enum": [
-                                "string",
-                                "number",
-                                "boolean",
-                                "percent",
-                                "currency",
-                                "date"
-                              ],
+                              "enum": ["string", "number", "boolean", "percent", "currency", "date"],
                               "description": "Der Datentyp der Spalte"
                             },
                             "format": {
@@ -704,17 +630,11 @@
                           "type": "array",
                           "items": {
                             "type": "object",
-                            "required": [
-                              "type",
-                              "value"
-                            ],
+                            "required": ["type", "value"],
                             "properties": {
                               "type": {
                                 "type": "string",
-                                "enum": [
-                                  "static_value",
-                                  "formula"
-                                ],
+                                "enum": ["static_value", "formula"],
                                 "description": "Ob die Zelle einen statischen Wert oder eine Formel enthält"
                               },
                               "value": {
@@ -749,15 +669,7 @@
         "name": "fontFamily",
         "type": "enum",
         "label": "Schriftart",
-        "values": [
-          "Arial",
-          "Calibri",
-          "Times New Roman",
-          "Courier New",
-          "Verdana",
-          "Georgia",
-          "Tahoma"
-        ],
+        "values": ["Arial", "Calibri", "Times New Roman", "Courier New", "Verdana", "Georgia", "Tahoma"],
         "default": "Calibri",
         "description": "Schriftart für die Excel-Tabelle. Standard ist Calibri."
       },
@@ -786,13 +698,7 @@
         "name": "borderStyle",
         "type": "enum",
         "label": "Rahmenstil",
-        "values": [
-          "none",
-          "thin",
-          "double",
-          "dashed",
-          "thick"
-        ],
+        "values": ["none", "thin", "double", "dashed", "thick"],
         "default": "thin",
         "description": "Rahmenstil für Tabellen. Standard ist 'thin'."
       },
@@ -849,21 +755,11 @@
       "name": "manage_notion_database",
       "parameters": {
         "type": "object",
-        "required": [
-          "action",
-          "notionApiKey"
-        ],
+        "required": ["action", "notionApiKey"],
         "properties": {
           "action": {
             "type": "string",
-            "enum": [
-              "view-structure",
-              "create-page",
-              "update-page",
-              "archive-page",
-              "query-pages",
-              "create-database"
-            ],
+            "enum": ["view-structure", "create-page", "update-page", "archive-page", "query-pages", "create-database"],
             "description": "Die auszuführende Aktion"
           },
           "notionApiKey": {
